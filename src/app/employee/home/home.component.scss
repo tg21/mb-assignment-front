@@ -1,0 +1,16 @@
+.top-right {
+    position: fixed;
+    top: 70px;
+    right: 15px;
+    height: 30px;
+    padding: 10px;
+}
+
+.modal-visible {
+    display: block;
+    background-color: #0000006b;
+}
+
+textarea {
+    height: 30px;
+}

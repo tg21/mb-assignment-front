@@ -1,0 +1,65 @@
+<form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+    <div class="mb-3">
+        <label for="exampleFormControlEmpId" class="form-label">Emp Id</label>
+        <input type="text" formControlName="empId" class=" form-control" id="exampleFormControlEmpId" placeholder="EMP123">
+        <div *ngIf="getControl.empId.touched && getControl.empId.invalid" class="text-danger">
+            <div *ngIf="getControl.empId.errors?.required">Employee id is required.</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">First Name</label>
+        <input type="text" formControlName="firstName" class=" form-control" id="exampleFormControlInput1" placeholder="John">
+        <div *ngIf="getControl.firstName.touched && getControl.firstName.invalid" class="text-danger">
+            <div *ngIf="getControl.firstName.errors?.required">first name is required.</div>
+            <div *ngIf="getControl.firstName.errors?.minlength">min 4 characters are required.</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput2" class="form-label">Last Name</label>
+        <input type="text" formControlName="lastName" class=" form-control" id="exampleFormControlInput2" placeholder="Doe">
+        <div *ngIf="getControl.firstName.touched && getControl.lastName.invalid" class="text-danger">
+            <div *ngIf="getControl.lastName.errors?.required">Last name is required.</div>
+            <div *ngIf="getControl.lastName.errors?.minlength">min 4 characters are required.</div>
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="date" class="form-label">DOB</label>
+        <input type="date" class="form-control" formControlName="dob" id="date">
+        <div *ngIf="getControl.dob.touched && getControl.dob.invalid" class="text-danger">
+            <div *ngIf="getControl.dob.errors?.required">DOB is required.</div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlMobile" class="form-label">Mobile</label>
+        <input type="text" formControlName="mobile" class=" form-control" id="exampleFormControlMobile" placeholder="9876543210">
+        <div *ngIf="getControl.mobile.touched && getControl.mobile.invalid" class="text-danger">
+            <div *ngIf="getControl.mobile.errors?.required">city is required</div>
+            <div *ngIf="getControl.mobile.errors?.minlength">mobile number must be at least 10 digits long</div>
+            <div *ngIf="getControl.mobile.errors?.maxlength">mobile number must be at most 14 digits long</div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlAddress" class="form-label">Address</label>
+        <textarea type="text" formControlName="address" class=" form-control" id="exampleFormControlAddress" placeholder="AB 4, Sample Street"></textarea>
+        <div *ngIf="getControl.address.touched && getControl.address.invalid" class="text-danger">
+            <div *ngIf="getControl.address.errors?.required">address is required</div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlCompany" class="form-label">City</label>
+        <input type="text" formControlName="city" class=" form-control" id="exampleFormControlCompany" placeholder="XYZ CITY">
+        <div *ngIf="getControl.city.touched && getControl.city.invalid" class="text-danger">
+            <div *ngIf="getControl.city.errors?.required">city is required</div>
+        </div>
+    </div>
+
+    <div class="row w-100 text-center border-top p-2">
+        <button *ngIf="!editMode" type="button" class="btn btn-secondary me-auto col-md-2" (click)="resetForm()">reset</button>
+        <button type="submit" [disabled]="employeeForm.status != 'VALID'" class="btn btn-primary ms-auto col-md-2">submit</button>
+    </div>
+</form>
